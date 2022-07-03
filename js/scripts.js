@@ -59,8 +59,8 @@ var animation;
     
     for (var i = 0; i < vLength; i+=3) {
       var dist = new THREE.Vector2(v[i], v[i+1]).sub(center);
-      var size = 20.0;
-      var magnitude = 20;
+      var size = 15.0;
+      var magnitude = 10;
       v[i+2] = Math.sin(dist.length()/-size + (ts/500)) * magnitude;
     }
     // plane.rotation.z +=0.01
@@ -69,8 +69,8 @@ var animation;
     plane.rotation.x = 1-(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
     plane.rotation.z = (scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
     planeMaterial.color.r = 0.3+(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight);
-    planeMaterial.color.b = (scrollElement.scrollTop-0)*0.2/(document.documentElement.scrollHeight - window.innerHeight);
-    planeMaterial.color.g = 0.5-(scrollElement.scrollTop-0)*0.5/(document.documentElement.scrollHeight - window.innerHeight);
+    planeMaterial.color.b = 2*(scrollElement.scrollTop-0)*0.2/(document.documentElement.scrollHeight - window.innerHeight);
+    planeMaterial.color.g = 0.6-(scrollElement.scrollTop-0)*0.5/(document.documentElement.scrollHeight - window.innerHeight);
     console.log(plane.rotation.z)
     // console.log(document.getElementsByClassName("mainText").scrollTop);
     plane.geometry.attributes.position.needsUpdate = true;
