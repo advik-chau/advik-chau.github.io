@@ -28,6 +28,7 @@ var camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / canvasHeight, 0.01,
 
 var planeGeometry = new THREE.PlaneBufferGeometry(1000, 1000, 200, 200);
 var planeMaterial = new THREE.MeshBasicMaterial({color: 0xab09f6, wireframe: true});
+planeMaterial.wireframeLinewidth = 1.0;
 var plane = new THREE.Mesh(planeGeometry, planeMaterial);
 plane.material.transparent = true;
 plane.material.opacity = 0.1;
@@ -36,7 +37,8 @@ plane.rotation.x = -0.5 * Math.PI;
 plane.position.set(0, 0, 0);
 scene.add(plane);
 
-camera.position.set(0, 100, 10)
+// camera.position.set(0, 100, 10)
+camera.position.set(0, 100, 75)
 camera.lookAt(scene.position);
 
 
@@ -57,15 +59,18 @@ var animation;
     
     for (var i = 0; i < vLength; i+=3) {
       var dist = new THREE.Vector2(v[i], v[i+1]).sub(center);
-      var size = 5.0;
-      var magnitude = 4;
+      var size = 20.0;
+      var magnitude = 20;
       v[i+2] = Math.sin(dist.length()/-size + (ts/500)) * magnitude;
     }
     // plane.rotation.z +=0.01
     // plane.rotation.z = document.getElementsByClassName("mainText").scrollTop
     let scrollElement = document.querySelector('html');
-    plane.rotation.x = 0.5-(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
+    plane.rotation.x = 1-(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
     plane.rotation.z = (scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
+    planeMaterial.color.r = 0.3+(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight);
+    planeMaterial.color.b = (scrollElement.scrollTop-0)*0.2/(document.documentElement.scrollHeight - window.innerHeight);
+    planeMaterial.color.g = 0.5-(scrollElement.scrollTop-0)*0.5/(document.documentElement.scrollHeight - window.innerHeight);
     console.log(plane.rotation.z)
     // console.log(document.getElementsByClassName("mainText").scrollTop);
     plane.geometry.attributes.position.needsUpdate = true;
