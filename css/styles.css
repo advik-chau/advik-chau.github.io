@@ -1,5 +1,6 @@
 :root {
   --primary-colour: rgb(90, 25, 25);
+  --three-canvas-h: 100px;
 }
 
 @font-face {
@@ -46,4 +47,15 @@
   to {
     background-position: 200% center;
   }
+}
+
+#navbarContainer {
+  position: absolute;
+}
+
+#threeCanvas {
+  z-index: -100;
+  position: fixed;
+  width: 100%;
+  height: var(--three-canvas-h);
 }
