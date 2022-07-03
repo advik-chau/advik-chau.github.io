@@ -1,18 +1,22 @@
 import * as THREE from "/js/three.module.min.js";
+import {OrbitControls} from "/js/OrbitControls.js"
 
-var CANVAS_WIDTH = document.body.clientWidth
-var CANVAS_HEIGHT = 100
-document.documentElement.style.setProperty("--three-canvas-h", CANVAS_HEIGHT);
+var CANVAS_WIDTH = window.innerWidth;
+// var CANVAS_HEIGHT = 100
+var canvasHeight = window.innerHeight;
+document.documentElement.style.setProperty("--three-canvas-h", canvasHeight);
 
 var threeCanvas = document.getElementById("threeCanvas");
 document.body.appendChild(threeCanvas);
 
 var renderer = new THREE.WebGLRenderer({alpha: true});
-renderer.setSize(CANVAS_WIDTH, CANVAS_HEIGHT)
+renderer.setSize(CANVAS_WIDTH, canvasHeight)
 threeCanvas.appendChild(renderer.domElement);
 
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 0.01, 10000 );
+var camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / canvasHeight, 0.01, 10000 );
+// const controls = new OrbitControls(camera, renderer.domElement)
+
 
 // const geometry = new THREE.BoxGeometry( 1, 1, 1 );
 // const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
@@ -22,7 +26,7 @@ var camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / CANVAS_HEIGHT, 0.01
 
 // camera.position.z = 2;
 
-var planeGeometry = new THREE.PlaneBufferGeometry(100, 100, 20, 20);
+var planeGeometry = new THREE.PlaneBufferGeometry(1000, 1000, 200, 200);
 var planeMaterial = new THREE.MeshBasicMaterial({color: 0xab09f6, wireframe: true});
 var plane = new THREE.Mesh(planeGeometry, planeMaterial);
 plane.material.transparent = true;
@@ -32,8 +36,9 @@ plane.rotation.x = -0.5 * Math.PI;
 plane.position.set(0, 0, 0);
 scene.add(plane);
 
-camera.position.set(0, 0, 10)
+camera.position.set(0, 100, 10)
 camera.lookAt(scene.position);
+
 
 // function animate() {
 // 	requestAnimationFrame( animate );
@@ -43,10 +48,10 @@ camera.lookAt(scene.position);
 // // SINE WAVE REPEL GENERATOR EFFECT: https://codepen.io/gbnikolov/pen/QwjGPg?editors=0010
 
 // animate();
-
+var animation;
 (function drawFrame(ts){
     var center = new THREE.Vector2(0,0);
-    window.requestAnimationFrame(drawFrame);
+    animation = requestAnimationFrame(drawFrame);
     var v = plane.geometry.attributes.position.array
     var vLength = v.length;
     
@@ -56,8 +61,37 @@ camera.lookAt(scene.position);
       var magnitude = 4;
       v[i+2] = Math.sin(dist.length()/-size + (ts/500)) * magnitude;
     }
-    plane.rotation.z +=0.01
-    plane.rotation.x +=0.01
+    // plane.rotation.z +=0.01
+    // plane.rotation.z = document.getElementsByClassName("mainText").scrollTop
+    let scrollElement = document.querySelector('html');
+    plane.rotation.x = 0.5-(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
+    plane.rotation.z = (scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
+    console.log(plane.rotation.z)
+    // console.log(document.getElementsByClassName("mainText").scrollTop);
     plane.geometry.attributes.position.needsUpdate = true;
     renderer.render(scene, camera);
   }());
+
+  function onResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+    requestAnimationFrame(render);
+    console.log("FIRED")
+  }
+
+
+  var timeoutFunction;
+
+  window.onresize = function() {
+    clearTimeout(timeoutFunction);
+
+    timeoutFunction = setTimeout(function(){
+      onResize();
+    }, 100);
+  }
+
+  function sigmoid(z) {
+    return 1 / (1 + Math.exp(-z/2));
+  }

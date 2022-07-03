@@ -49,13 +49,39 @@
   }
 }
 
-#navbarContainer {
-  position: absolute;
+html, body {
+  margin: 0;
+  padding: 0;
 }
 
+#navbarContainer {
+  /* position: absolute; */
+  width: 100vw;
+  /* background-color: rgb(255, 255, 255); */
+  backdrop-filter: blur(10px);
+  /* -webkit-mask: -webkit-gradient(
+    linear,
+    left 0%,
+    left 30%,
+    from(rgba(0, 0, 0, 0)),
+    to(rgba(0, 0, 0, 1))
+  ); */
+  -webkit-mask: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%);
+}
+/* 
 #threeCanvas {
   z-index: -100;
   position: fixed;
   width: 100%;
   height: var(--three-canvas-h);
+} */
+
+.mainText {
+  z-index: -99;
+  position: absolute;
+  top: 130px;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  overflow: hidden;
 }
