@@ -66,12 +66,22 @@ var animation;
     // plane.rotation.z +=0.01
     // plane.rotation.z = document.getElementsByClassName("mainText").scrollTop
     let scrollElement = document.querySelector('html');
-    plane.rotation.x = 1-(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
-    plane.rotation.z = (scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
-    planeMaterial.color.r = 0.3+(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight);
-    planeMaterial.color.b = 2*(scrollElement.scrollTop-0)*0.2/(document.documentElement.scrollHeight - window.innerHeight);
-    planeMaterial.color.g = 0.6-(scrollElement.scrollTop-0)*0.5/(document.documentElement.scrollHeight - window.innerHeight);
-    console.log(plane.rotation.z)
+    if(scrollElement.scrollTop != 0){
+      console.log(scrollElement.scrollTop)
+      // plane.rotation.x = 1-(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
+      // plane.rotation.z = (scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
+      // planeMaterial.color.r = 0.3+(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight);
+      // planeMaterial.color.b = 2*(scrollElement.scrollTop-0)*0.2/(document.documentElement.scrollHeight - window.innerHeight);
+      // planeMaterial.color.g = 0.6-(scplane.rotation.x = 1-(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
+      plane.rotation.z = document.documentElement.scrollTop/100; //normalise b/w 0 to 1 val - min / max - min
+      plane.rotation.x = document.documentElement.scrollTop/100; //normalise b/w 0 to 1 val - min / max - min
+      // planeMaterial.color.r = 0.4-document.documentElement.scrollTop/100;
+      // planeMaterial.color.b = 0.3-document.documentElement.scrollTop/100;
+      // planeMaterial.color.g = 0.6-(scrollElement.scrollTop-0)*0.5/(document.documentElement.scrollHeight - window.innerHeight);
+      planeMaterial.color.setHSL((scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight), 1.0, 0.3);
+
+    }
+    
     // console.log(document.getElementsByClassName("mainText").scrollTop);
     plane.geometry.attributes.position.needsUpdate = true;
     renderer.render(scene, camera);
@@ -82,10 +92,15 @@ var animation;
     camera.updateProjectionMatrix();
 
     renderer.setSize( window.innerWidth, window.innerHeight );
-    requestAnimationFrame(render);
+    // requestAnimationFrame(render);
     console.log("FIRED")
   }
 
+  function randomMeshColour() {
+      planeMaterial.color.r = Math.random();
+      planeMaterial.color.g = Math.random();
+      planeMaterial.color.b = Math.random();
+  }
 
   var timeoutFunction;
 
@@ -99,4 +114,12 @@ var animation;
 
   function sigmoid(z) {
     return 1 / (1 + Math.exp(-z/2));
+  }
+
+  var scrollTimeout;
+  window.onscroll = function() {
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(function() {
+      // randomMeshColour();
+    }, 100);
   }
