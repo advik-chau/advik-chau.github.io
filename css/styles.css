@@ -63,11 +63,14 @@
 }
 
 
-#navbarContainer {
+.navbar-container {
   width: max-content;
-  /* position: absolute; */
-  /* top: 40%; */
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* position: absolute; */
   /* left: 50%; */
   /* transform: translate(-50%, 0); */
   /* border-radius: 30px; */
@@ -83,7 +86,7 @@
   /* font-family: "CMU Serif Roman" !important; */
   /* -webkit-mask: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%); */
   margin: auto;
-  
+  top: 40%;
 
 }
 
