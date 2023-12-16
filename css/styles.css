@@ -3,68 +3,57 @@
   --three-canvas-h: 100px;
 }
 
-
+/* Fonts */
 
 @font-face {
   font-family: 'CMU Serif Roman';
-  font-style: normal;
-  font-weight: normal;
-  src: local('CMU Serif Roman'), url('../assets/fonts/cmunrm.woff') format('woff');
-  }
-  
+  src: url('../assets/fonts/cmunrm.woff') format('woff');
+}
 
-  @font-face {
-  font-family: 'CMU Serif Italic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('CMU Serif Italic'), url('../assets/fonts/cmunti.woff') format('woff');
-  }
-  
+@font-face {
+  font-family: 'CMU Serif Roman Italic';
+  src: url('../assets/fonts/cmunti.woff') format('woff');
+}
 
-  @font-face {
-  font-family: 'CMU Serif Bold';
-  font-style: normal;
-  font-weight: normal;
-  src: local('CMU Serif Bold'), url('../assets/fonts/cmunbx.woff') format('woff');
-  }
-  
+* {
+  font-family: 'CMU Serif Roman';
+  color: white;
+}
 
-  @font-face {
-  font-family: 'CMU Serif BoldItalic';
-  font-style: normal;
-  font-weight: normal;
-  src: local('CMU Serif BoldItalic'), url('../assets/fonts/cmunbi.woff') format('woff');
-  }
+.navbar-nav {
+  clear:both; 
+}
+  
 
 .main-title {
-  text-decoration: none;
-  font-style: italic;
-  font-size: 25px;
-  font-weight: bold;
+  /* text-decoration: none; */
+  text-transform: lowercase;
+  /* font-style: italic; */
+  font-size: 50px !important;
   color: var(--primary-colour);
+  margin: auto;
 }
 
 .navbar .nav-item {
   padding-right: 10px !important;
-  margin-right: auto;
 }
 
 .colour-animation
 {
-   text-transform: uppercase;
+   /* text-transform: uppercase; */
   background-image: linear-gradient(
     -225deg,
-    #231557 0%,
-    #44107a 29%,
-    #ff1361 67%,
-    #fff800 100%
+    /* #231557 0%, */
+    #ff1361 0%,
+    #fff800 50%,
+    #ff1361 100%
   );
   background-size: auto auto;
   background-size: 200% auto;
   color: #fff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: textclip 2s linear infinite;
+  animation: textclip 10s forwards infinite;
 }
 
 @keyframes textclip {
@@ -73,19 +62,17 @@
   }
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-}
 
 #navbarContainer {
+  width: max-content;
   /* position: absolute; */
-  position: fixed;
-  left: 50%;
-  transform: translate(-50%, 0);
-  border-radius: 30px;
+  /* top: 40%; */
+  position: absolute;
+  /* left: 50%; */
+  /* transform: translate(-50%, 0); */
+  /* border-radius: 30px; */
   /* background-color: rgb(255, 255, 255); */
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   /* -webkit-mask: -webkit-gradient(
     linear,
     left 0%,
@@ -93,9 +80,11 @@ html, body {
     from(rgba(0, 0, 0, 0)),
     to(rgba(0, 0, 0, 1))
   ); */
-  font-family: "CMU Serif Roman" !important;
+  /* font-family: "CMU Serif Roman" !important; */
+  /* -webkit-mask: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%); */
+  margin: auto;
+  
 
-  -webkit-mask: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%);
 }
 
 #threeCanvas {
@@ -107,7 +96,7 @@ html, body {
 }
 
 .mainText {
-  font-family:'CMU Serif Roman';
+  /* font-family:'CMU Serif Roman'; */
   z-index: -99;
   position: absolute;
   top: 130px;
