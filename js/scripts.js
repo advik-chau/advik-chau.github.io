@@ -1,6 +1,8 @@
 import * as THREE from "./three.module.min.js";
 import {OrbitControls} from "/js/OrbitControls.js";
 
+
+window.addEventListener( 'resize', onWindowResize, false );
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
@@ -24,6 +26,16 @@ function animate() {
 
 }
 animate();
+
+
+function onWindowResize(){
+
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+}
 
 
 // var CANVAS_WIDTH = window.innerWidth;
