@@ -15,6 +15,10 @@ threeCanvas.appendChild(renderer.domElement);
 
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / canvasHeight, 0.01, 10000 );
+
+scene.background = new THREE.Color("#e3dcc1");
+
+
 // const controls = new OrbitControls(camera, renderer.domElement)
 
 
@@ -28,10 +32,10 @@ var camera = new THREE.PerspectiveCamera( 50, CANVAS_WIDTH / canvasHeight, 0.01,
 
 var planeGeometry = new THREE.PlaneBufferGeometry(1000, 1000, 200, 200);
 var planeMaterial = new THREE.MeshBasicMaterial({color: 0xab09f6, wireframe: true});
-planeMaterial.wireframeLinewidth = 1.0;
+planeMaterial.wireframeLinewidth = 5;
 var plane = new THREE.Mesh(planeGeometry, planeMaterial);
 plane.material.transparent = true;
-plane.material.opacity = 0.1;
+plane.material.opacity = 1;
 
 plane.rotation.x = -0.5 * Math.PI;
 plane.position.set(0, 0, 0);
@@ -52,38 +56,39 @@ camera.lookAt(scene.position);
 // animate();
 var animation;
 (function drawFrame(ts){
-    var center = new THREE.Vector2(0,0);
-    animation = requestAnimationFrame(drawFrame);
-    var v = plane.geometry.attributes.position.array
-    var vLength = v.length;
+  camera.position.y = document.getElementsByClassName("mainText").scrollTop
+    // var center = new THREE.Vector2(0,0);
+    // animation = requestAnimationFrame(drawFrame);
+    // var v = plane.geometry.attributes.position.array
+    // var vLength = v.length;
     
-    for (var i = 0; i < vLength; i+=3) {
-      var dist = new THREE.Vector2(v[i], v[i+1]).sub(center);
-      var size = 15.0;
-      var magnitude = 10;
-      v[i+2] = Math.sin(dist.length()/-size + (ts/500)) * magnitude;
-    }
-    // plane.rotation.z +=0.01
-    // plane.rotation.z = document.getElementsByClassName("mainText").scrollTop
-    let scrollElement = document.querySelector('html');
-    if(scrollElement.scrollTop != 0){
-      console.log(scrollElement.scrollTop)
-      // plane.rotation.x = 1-(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
-      // plane.rotation.z = (scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
-      // planeMaterial.color.r = 0.3+(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight);
-      // planeMaterial.color.b = 2*(scrollElement.scrollTop-0)*0.2/(document.documentElement.scrollHeight - window.innerHeight);
-      // planeMaterial.color.g = 0.6-(scplane.rotation.x = 1-(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
-      plane.rotation.z = document.documentElement.scrollTop/100; //normalise b/w 0 to 1 val - min / max - min
-      plane.rotation.x = document.documentElement.scrollTop/100; //normalise b/w 0 to 1 val - min / max - min
-      // planeMaterial.color.r = 0.4-document.documentElement.scrollTop/100;
-      // planeMaterial.color.b = 0.3-document.documentElement.scrollTop/100;
-      // planeMaterial.color.g = 0.6-(scrollElement.scrollTop-0)*0.5/(document.documentElement.scrollHeight - window.innerHeight);
-      planeMaterial.color.setHSL((scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight), 1.0, 0.3);
+    // for (var i = 0; i < vLength; i+=3) {
+    //   var dist = new THREE.Vector2(v[i], v[i+1]).sub(center);
+    //   var size = 15.0;
+    //   var magnitude = 10;
+    //   v[i+2] = Math.sin(dist.length()/-size + (ts/500)) * magnitude;
+    // }
+    // // plane.rotation.z +=0.01
+    // // plane.rotation.z = document.getElementsByClassName("mainText").scrollTop
+    // let scrollElement = document.querySelector('html');
+    // if(scrollElement.scrollTop != 0){
+    //   console.log(scrollElement.scrollTop)
+    //   // plane.rotation.x = 1-(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
+    //   // plane.rotation.z = (scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
+    //   // planeMaterial.color.r = 0.3+(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight);
+    //   // planeMaterial.color.b = 2*(scrollElement.scrollTop-0)*0.2/(document.documentElement.scrollHeight - window.innerHeight);
+    //   // planeMaterial.color.g = 0.6-(scplane.rotation.x = 1-(scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight); //normalise b/w 0 to 1 val - min / max - min
+    //   plane.rotation.z = document.documentElement.scrollTop/100; //normalise b/w 0 to 1 val - min / max - min
+    //   plane.rotation.x = document.documentElement.scrollTop/100; //normalise b/w 0 to 1 val - min / max - min
+    //   // planeMaterial.color.r = 0.4-document.documentElement.scrollTop/100;
+    //   // planeMaterial.color.b = 0.3-document.documentElement.scrollTop/100;
+    //   // planeMaterial.color.g = 0.6-(scrollElement.scrollTop-0)*0.5/(document.documentElement.scrollHeight - window.innerHeight);
+    //   planeMaterial.color.setHSL((scrollElement.scrollTop-0)/(document.documentElement.scrollHeight - window.innerHeight), 1.0, 0.3);
 
-    }
+    // }
     
-    // console.log(document.getElementsByClassName("mainText").scrollTop);
-    plane.geometry.attributes.position.needsUpdate = true;
+    // // console.log(document.getElementsByClassName("mainText").scrollTop);
+    camera.attributes.position.needsUpdate = true;
     renderer.render(scene, camera);
   }());
 

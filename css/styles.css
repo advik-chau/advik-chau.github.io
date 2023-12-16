@@ -1,16 +1,40 @@
 :root {
-  --primary-colour: rgb(90, 25, 25);
+  --primary-colour: rgb(213, 210, 210);
   --three-canvas-h: 100px;
 }
 
-@font-face {
-  font-family: "CMU Serif";
-  src: url("fonts/cmunti.woff");
-}
 
-* {
-  font-family: "CMU Serif" !important;
-}
+
+@font-face {
+  font-family: 'CMU Serif Roman';
+  font-style: normal;
+  font-weight: normal;
+  src: local('CMU Serif Roman'), url('../assets/fonts/cmunrm.woff') format('woff');
+  }
+  
+
+  @font-face {
+  font-family: 'CMU Serif Italic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('CMU Serif Italic'), url('../assets/fonts/cmunti.woff') format('woff');
+  }
+  
+
+  @font-face {
+  font-family: 'CMU Serif Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('CMU Serif Bold'), url('../assets/fonts/cmunbx.woff') format('woff');
+  }
+  
+
+  @font-face {
+  font-family: 'CMU Serif BoldItalic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('CMU Serif BoldItalic'), url('../assets/fonts/cmunbi.woff') format('woff');
+  }
 
 .main-title {
   text-decoration: none;
@@ -69,6 +93,8 @@ html, body {
     from(rgba(0, 0, 0, 0)),
     to(rgba(0, 0, 0, 1))
   ); */
+  font-family: "CMU Serif Roman" !important;
+
   -webkit-mask: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%);
 }
 
@@ -81,6 +107,7 @@ html, body {
 }
 
 .mainText {
+  font-family:'CMU Serif Roman';
   z-index: -99;
   position: absolute;
   top: 130px;
