@@ -1,5 +1,5 @@
 import * as THREE from "./three.module.min.js";
-import {OrbitControls} from "/js/OrbitControls.js";
+// import {OrbitControls} from "/js/OrbitControls.js";
 
 
 window.addEventListener( 'resize', onWindowResize, false );
@@ -8,6 +8,7 @@ const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.inner
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
+renderer.setPixelRatio(window.devicePixelRatio);  
 document.body.appendChild( renderer.domElement );
 
 const geometry = new THREE.TorusKnotGeometry( 10, 3, 100, 30 ); 
