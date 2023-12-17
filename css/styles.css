@@ -27,6 +27,7 @@ a {
 
 a:hover {
   color: wheat !important;
+  z-index: 1000;
 }
 
 html, body {

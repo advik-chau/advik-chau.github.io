@@ -16,9 +16,12 @@ renderer.setPixelRatio(window.devicePixelRatio);
 document.body.appendChild( renderer.domElement );
 
 const geometry = new THREE.TorusKnotGeometry( 10, 3, 100, 30 ); 
+const geometry_2 = new THREE.IcosahedronGeometry(1, 1, 1)
 const material = new THREE.MeshBasicMaterial( { color: 0x004400, wireframe: true } );
 const cube = new THREE.Mesh( geometry, material );
+const g2  = new THREE.Mesh( geometry_2, material )
 scene.add( cube );
+// scene.add(g2);
 
 camera.position.z = 10;
 
@@ -28,6 +31,10 @@ function animate() {
 	renderer.render( scene, camera );
   cube.rotation.x += 0.001;
   cube.rotation.y += 0.001;
+
+  g2.rotation.x += 0.001;
+  g2.rotation.y += 0.001;
+  camera.rotation.z += 0.001;
 
 }
 animate();
