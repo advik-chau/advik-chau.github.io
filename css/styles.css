@@ -23,11 +23,11 @@ a {
   color: white !important;
   text-decoration: none !important;
   transition: ease 1s;
+  z-index: 1000;
 }
 
 a:hover {
   color: wheat !important;
-  z-index: 1000;
 }
 
 html, body {
