@@ -3,6 +3,7 @@ import * as THREE from "./three.module.min.js";
 
 
 window.addEventListener( 'resize', onWindowResize, false );
+document.getElementById("about").onclick = hideAbout;
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
@@ -36,6 +37,22 @@ function onWindowResize(){
 
     renderer.setSize( window.innerWidth, window.innerHeight );
 
+}
+
+// $("#clicked_link").click( function() {
+//   $("#login").slidedown("slow");
+//   return false;
+// });
+
+function hideAbout() {
+  let div = document.getElementById("about-div");
+  // if (div.style.display === "none") {
+  //   div.style.display = "block";
+  // } else {
+  //   div.style.display = "none";
+  // }
+  // return false;
+  div.classList.toggle('show');
 }
 
 
