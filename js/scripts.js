@@ -3,7 +3,9 @@ import * as THREE from "./three.module.min.js";
 
 
 window.addEventListener( 'resize', onWindowResize, false );
-document.getElementById("about").onclick = hideAbout;
+document.getElementById("about").onclick = function() {hideOnClick("about-div")};
+document.getElementById("projects").onclick = function() {hideOnClick("projects-div")};
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
@@ -13,7 +15,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 document.body.appendChild( renderer.domElement );
 
 const geometry = new THREE.TorusKnotGeometry( 10, 3, 100, 30 ); 
-const material = new THREE.MeshBasicMaterial( { color: 0x003300, wireframe: true } );
+const material = new THREE.MeshBasicMaterial( { color: 0x004400, wireframe: true } );
 const cube = new THREE.Mesh( geometry, material );
 scene.add( cube );
 
@@ -44,8 +46,8 @@ function onWindowResize(){
 //   return false;
 // });
 
-function hideAbout() {
-  let div = document.getElementById("about-div");
+function hideOnClick(someElementId) {
+  let div = document.getElementById(someElementId);
   // if (div.style.display === "none") {
   //   div.style.display = "block";
   // } else {
