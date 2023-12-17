@@ -22,6 +22,7 @@
 a {
   color: white !important;
   text-decoration: none !important;
+  transition: ease 1s;
 }
 
 a:hover {
@@ -157,5 +158,25 @@ html, body {
 }
 
 .projects-list a {
-  text-decoration: underline !important;
+  /* text-decoration: underline !important; */
+  /* text-decoration-thickness: 0.5px; */
+  /* text-decoration-color: chartreuse; */
+    transition: ease 1s;
+    border-bottom: 1px solid white; 
+}
+
+.projects-list a:hover {
+
+  /* text-decoration: underline !important; */
+  /* text-decoration-thickness: 0.5px; */
+  /* text-decoration-color: red; */
+  /* position: absolute; */
+  /* border: 0px;
+  ;
+  border-bottom-width: 1px;
+  border-style: solid;
+  background-size: 200% 200%;
+  -webkit-animation: Animation 5s ease infinite;
+  -moz-animation: Animation 5s ease infinite;
+  animation: Animation 5s ease infinite; */
 }

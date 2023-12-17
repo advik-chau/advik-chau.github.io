@@ -3,6 +3,7 @@ import * as THREE from "./three.module.min.js";
 
 
 window.addEventListener( 'resize', onWindowResize, false );
+window.addEventListener( 'refresh', onWindowResize, false );
 document.getElementById("about").onclick = function() {hideOnClick("about-div")};
 document.getElementById("projects").onclick = function() {hideOnClick("projects-div")};
 
