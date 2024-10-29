@@ -1,7 +1,7 @@
 import * as THREE from "./three.module.min.js";
 // import {OrbitControls} from "/js/OrbitControls.js";
 
-
+document.body.style.zoom = 1.0 // reset zoom
 window.addEventListener( 'resize', onWindowResize, false );
 window.addEventListener( 'refresh', onWindowResize, false );
 document.getElementById("about").onclick = function() {hideOnClick("about-div")};
