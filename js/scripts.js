@@ -10,8 +10,7 @@ function showElement(el) {
     
 }
 // for testing
-
-showElement('projects')
+// showElement('projects')
 
 function hideElement(el) {
     document.getElementById(el + '-popup').style.display='none';
