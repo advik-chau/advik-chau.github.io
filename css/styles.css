@@ -20,171 +20,57 @@
 }
 
 a {
-  color: white !important;
-  text-decoration: none !important;
-  transition: ease 1s;
+    text-decoration: none;
 }
 
-a:hover {
-  color: wheat !important;
-} 
+h2 {
+    font-weight: initial;
+    font-variant: small-caps;
+}
 
 html, body {
   background-color: black !important;
 }
 
-.navbar-nav {
-  clear:both; 
-
-}
-  
-
-.main-title {
-  /* text-decoration: none; */
-  text-transform: lowercase;
-  /* font-style: italic; */
-  font-size: 50px !important;
-  color: var(--primary-colour);
-  margin: auto;
+ul li {
+    margin-bottom: 8px;
 }
 
-.navbar .nav-item {
-  padding-right: 10px !important;
+.center-box {
+    width: max-content;
+    height: max-content;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
 }
 
-.colour-animation
-{
-   /* text-transform: uppercase; */
-  background-image: linear-gradient(
-    -225deg,
-    /* #231557 0%, */
-    #ff1361 0%,
-    #fff800 50%,
-    #ff1361 100%
-  );
-  background-size: auto auto;
-  background-size: 200% auto;
-  color: #fff;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: textclip 10s forwards infinite;
+.social-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 28px;
+    width: 28px;
+    border: #272727;
+    border-style: solid;
+    border-width: 0.75px;
+    border-radius: 4px;
 }
 
-@keyframes textclip {
-  to {
-    background-position: 200% center;
-  }
+.project-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border: #272727;
+    border-style: solid;
+    border-width: 0.75px;
+    border-radius: 4px;
 }
 
-
-.navbar-container {
-  width: max-content;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  text-align: center;
-  /* position: absolute; */
-  /* left: 50%; */
-  /* transform: translate(-50%, 0); */
-  /* border-radius: 30px; */
-  /* background-color: rgb(255, 255, 255); */
-  /* backdrop-filter: blur(10px); */
-  /* -webkit-mask: -webkit-gradient(
-    linear,
-    left 0%,
-    left 30%,
-    from(rgba(0, 0, 0, 0)),
-    to(rgba(0, 0, 0, 1))
-  ); */
-  /* font-family: "CMU Serif Roman" !important; */
-  /* -webkit-mask: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 30%); */
-  margin: auto;
-  top: 40%;
-  z-index: 100;
+.proj-link {
+    text-decoration: underline;
 }
-
-@media only screen and (max-width: 500px) {
-  .about-div {
-    top: 50% !important;
-  }
-}
-
-#threeCanvas {
-  z-index: -100;
-  position: fixed;
-  top: 0px;
-  width: 100%;
-  height: var(--three-canvas-h);
-}
-
-.mainText {
-  /* font-family:'CMU Serif Roman'; */
-  z-index: -99;
-  position: absolute;
-  top: 130px;
-  text-align: center;
-  width: 50%;
-  margin: auto;
-  overflow: hidden;
-}
-
-.about-div {
-  white-space: pre-line;
-  width: max-content;
-  height: max-content;
-  background-color: rgba(100, 99, 99, 0.393);
-  position: absolute;
-  margin: auto;
-  inset: 0px 0px 0px 0px;
-  top: 20%;
-  padding: 20px;
-  border-radius: 10px;
-  display: block;
-  opacity: 0;
-  transition: opacity 0.6s linear;
-}
-
-.projects-div {
-  white-space: pre-line;
-  width: max-content;
-  height: max-content;
-  background-color: rgba(100, 99, 99, 0.393);
-  position: absolute;
-  margin: auto;
-  inset: 0 0 50% 30%;
-  padding: 20px;
-  border-radius: 10px;
-  display: block;
-  opacity: 0;
-  transition: opacity 0.6s linear;
-}
-
-.show {
-  opacity: 1;
-}
-
-.projects-list a {
-  /* text-decoration: underline !important; */
-  /* text-decoration-thickness: 0.5px; */
-  /* text-decoration-color: chartreuse; */
-    transition: ease 1s;
-    border-bottom: 1px solid white; 
-}
-
-.projects-list a:hover {
-
-  /* text-decoration: underline !important; */
-  /* text-decoration-thickness: 0.5px; */
-  /* text-decoration-color: red; */
-  /* position: absolute; */
-  /* border: 0px;
-  ;
-  border-bottom-width: 1px;
-  border-style: solid;
-  background-size: 200% 200%;
-  -webkit-animation: Animation 5s ease infinite;
-  -moz-animation: Animation 5s ease infinite;
-  animation: Animation 5s ease infinite; */
-}
+/*------------*/
