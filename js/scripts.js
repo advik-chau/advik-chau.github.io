@@ -6,15 +6,15 @@ clickableDivs.forEach(div => {
 
 function showElement(el) {
     document.getElementById(el + '-popup').style.display='block';
-    document.getElementById('popup-overlay').style.display='block';
-    
+    // document.getElementById('popup-overlay').style.display='block';
+    document.getElementById('main-box').classList.add('blur-filter');
 }
 // for testing
 // showElement('projects')
 
 function hideElement(el) {
     document.getElementById(el + '-popup').style.display='none';
-    document.getElementById('popup-overlay').style.display='none'
+    // document.getElementById('popup-overlay').style.display='none'
 }
 
 document.addEventListener('keydown', function(e) {
@@ -27,8 +27,9 @@ function closeAll() {
     document.querySelectorAll('.popup').forEach(div => {
         div.style.display = 'none';
     })
-    document.getElementById('popup-overlay').style.display = 'none';
+    // document.getElementById('popup-overlay').style.display = 'none';
         // document.getElementById('about-popup').style.display = 'none';
+    document.getElementById('main-box').classList.remove('blur-filter');
 }
 
 
